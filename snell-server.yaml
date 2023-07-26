@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snell-server
+spec:
+  selector:
+    matchLabels:
+      app: snell-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: snell-server
+    spec:
+      containers:
+        - name: snell-server
+          image: billin9/snell-server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PSK
+              value: as1ffVD7ZpXmaQpsF1DnAs4ICNo0h3U
+
